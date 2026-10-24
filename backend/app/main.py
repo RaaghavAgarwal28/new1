@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.api.auth import auth_router
 from app.api.routes import router
+from app.api.tax_routes import tax_router
 from app.core.config import REPORTS_DIR, settings
 from app.core.middleware import register_middleware
 
@@ -49,4 +50,5 @@ register_middleware(app)
 # ── Routes ──
 app.include_router(auth_router, prefix="/api")
 app.include_router(router, prefix="/api")
+app.include_router(tax_router, prefix="/api")
 app.mount("/reports", StaticFiles(directory=REPORTS_DIR), name="reports")

@@ -12,6 +12,7 @@ import {
   LogOut,
   User,
   PlayCircle,
+  Scale,
 } from "lucide-react";
 import { MuleHunter3DEngine } from "./components/graph/MuleHunter3DEngine";
 import { Shell } from "./components/layout/Shell";
@@ -29,6 +30,7 @@ import { SentinelPanel } from "./components/panels/SentinelPanel";
 import { StatesSection } from "./components/panels/StatesSection";
 import { TimelinePanel } from "./components/panels/TimelinePanel";
 import { DemoPipelinePanel } from "./components/panels/DemoPipelinePanel";
+import { TaxIntelligencePanel } from "./components/panels/TaxIntelligencePanel";
 import { LoginScreen } from "./components/auth/LoginScreen";
 import { LandingPage } from "./components/landing/LandingPage";
 import { CrystallineCube } from "./components/ui/CrystallineCube";
@@ -215,6 +217,7 @@ function AuthenticatedApp({ user, logout, authFetch, isAdmin }) {
         <div className="flex flex-wrap gap-3">
           {[
             { id: "command", label: "Command Center" },
+            { id: "tax", label: "Tax Intelligence", icon: Scale },
             { id: "muleHunter3d", label: "3D Network", icon: Shield },
             { id: "demo", label: "Live Simulation", icon: PlayCircle },
             { id: "ml", label: "ML Models", icon: Brain },
@@ -352,6 +355,12 @@ function AuthenticatedApp({ user, logout, authFetch, isAdmin }) {
         <section className="grid gap-6">
           <BanksHero />
           <BanksSection banks={bankIntel.banks} />
+        </section>
+      )}
+
+      {activeDashboard === "tax" && (
+        <section className="grid gap-6">
+          <TaxIntelligencePanel onSelectAccount={handleSelectAccount} />
         </section>
       )}
     </Shell>

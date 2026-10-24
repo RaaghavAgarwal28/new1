@@ -96,6 +96,15 @@ Instead of relying solely on rigid rules, VARUNA uses a multi-modal AI approach 
 - Predicted next-hop accounts highlighted in orange on the graph
 - Directly supports the story that VARUNA acts before funds fully disappear
 
+### 6. VARUNA TaxWatch (CBDT & FIU-IND Tax Non-Filer Intelligence)
+- Real-time detection of high-velocity banking throughput vs. Income Tax Return (ITR) filings
+- Identification of CBDT Section 206AB Non-Filers and gross under-reporters (e.g. ₹1Cr+ throughput with ₹2.5L declared income)
+- SFT (Specified Financial Transactions) Rule 114E Structuring / Smurfing detection (bursts split just under ₹50,000 to evade mandatory PAN reporting)
+- Detection of Benami, inoperative, and synthetic PAN tax shields (Section 139AAA)
+- Section 115BBE Statutory Recovery Estimation (effective 78% special tax rate + penalty for unexplained money u/s 68/69A)
+- One-click statutory notice issuance: Section 133(6) inquiry notices & Section 148A reassessment notices with DIN hashes
+- Section 281B provisional bank attachment liens to safeguard government revenue before funds dissipate
+
 ## 💪💪💪 Detection logic 💪💪💪
 
 The current MVP uses an explainable scoring pipeline:
@@ -131,6 +140,12 @@ If the AI scoring engine decides to `BLOCK` or flag a transaction for `REVIEW`, 
 - `GET /api/analyze/{account_id}`
 - `GET /api/chain/{account_id}`
 - `POST /api/freeze/{account_id}`
+- `GET /api/tax/overview`
+- `GET /api/tax/registry`
+- `GET /api/tax/dossier/{account_id}`
+- `POST /api/tax/issue-notice`
+- `POST /api/tax/attach/{account_id}`
+- `GET /api/tax/notices`
 
 ## Run locally
 
